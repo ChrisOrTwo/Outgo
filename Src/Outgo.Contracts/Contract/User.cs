@@ -1,6 +1,6 @@
-﻿namespace Outgo.Contracts
+﻿namespace Outgo.Contracts.Contract
 {
-    public class User : Entity
+    public class User
     {
         public int UserId { get; set; }
         public string Name { get; set; }
