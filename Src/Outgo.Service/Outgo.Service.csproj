@@ -65,6 +65,12 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Outgo.Contracts\Outgo.Contracts.csproj">
+      <Project>{CBFB7030-058C-4C95-9F3D-F284861B233C}</Project>
+      <Name>Outgo.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
