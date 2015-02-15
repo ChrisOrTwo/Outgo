@@ -12,9 +12,13 @@ namespace Outgo.Service
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-us");
 
             const string connectionString = "Server=127.0.0.1;Port=5432;Database=outgo;Uid=postgres;Pwd=ghostdj10;";
-            var session = Database.Open();
-            var users = session.User.FirstOrDefault();
-            Console.WriteLine(users.Count);
+            var session = Database.OpenConnection(connectionString);
+
+            var users = session.User.All();
+            foreach (var user in users)
+            {
+                Console.WriteLine(user.Name);
+            }
             Console.ReadKey();
         }
     }
