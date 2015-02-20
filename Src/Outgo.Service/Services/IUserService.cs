@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using Outgo.Contracts.Contract;
 
 namespace Outgo.Service.Services
