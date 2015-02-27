@@ -2,14 +2,19 @@
 
 namespace Outgo.Service.Services
 {
-    public class ServiceBase
+    public class RepositoryBase : IRepositoryBase
     {
-        public ServiceBase(IDatabaseHost host)
+        public RepositoryBase(IDatabaseHost host)
         {
             _host = host;
         }
 
-        private IDatabaseHost _host { get; set; }
+        private readonly IDatabaseHost _host;
+
+        public IDatabaseHost Host
+        {
+            get { return _host; }
+        }
 
         public T Call<T>(Func<IDatabaseHost, T> databaseFunction)
         {
