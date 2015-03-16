@@ -38,6 +38,9 @@
     <Reference Include="Mono.Security">
       <HintPath>..\..\Solution\Outgo.Service\packages\Npgsql.2.2.4.3\lib\net40\Mono.Security.dll</HintPath>
     </Reference>
+    <Reference Include="Nancy.Hosting.Self">
+      <HintPath>..\..\Solution\Outgo.Service\packages\Nancy.Hosting.Self.1.1\lib\net40\Nancy.Hosting.Self.dll</HintPath>
+    </Reference>
     <Reference Include="Npgsql">
       <HintPath>..\..\Solution\Outgo.Service\packages\Npgsql.2.2.4.3\lib\net40\Npgsql.dll</HintPath>
     </Reference>

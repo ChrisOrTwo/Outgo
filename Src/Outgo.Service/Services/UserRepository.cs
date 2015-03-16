@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Outgo.Contracts.Contract;
 
 namespace Outgo.Service.Services
