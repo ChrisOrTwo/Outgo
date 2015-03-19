@@ -1,25 +1,25 @@
 ﻿using NUnit.Framework;
-using Outgo.Service.Services;
+using Outgo.Service.Data;
 
 namespace Outgo.Service.Tests
 {
-    [TestFixture]
-    public class DatabaseHostTest
-    {
-        private IDatabaseHost _sut;
-        private dynamic _databaseConnection;
+	[TestFixture]
+	public class DatabaseHostTest
+	{
+		[SetUp]
+		public void Setup()
+		{
+			_databaseConnection = new object();
+			_sut = new DatabaseHost(_databaseConnection);
+		}
 
-        [SetUp]
-        public void Setup()
-        {
-            _databaseConnection = new object();
-            _sut = new DatabaseHost(_databaseConnection);
-        }
+		private IDatabaseHost _sut;
+		private dynamic _databaseConnection;
 
-        [Test]
-        public void DatabaseConnection_should_not_be_empty()
-        {
-            Assert.IsNotNull(_sut.DatabaseConnection);
-        }
-    }
+		[Test]
+		public void DatabaseConnection_should_not_be_empty()
+		{
+			Assert.IsNotNull(_sut.Session);
+		}
+	}
 }

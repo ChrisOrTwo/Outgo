@@ -38,6 +38,10 @@
     <Reference Include="Mono.Security">
       <HintPath>..\..\Solution\Outgo.Service\packages\Npgsql.2.2.4.3\lib\net40\Mono.Security.dll</HintPath>
     </Reference>
+    <Reference Include="Nancy">
+      <HintPath>..\..\Solution\Outgo.Service\packages\Nancy.1.1\lib\net40\Nancy.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Nancy.Hosting.Self">
       <HintPath>..\..\Solution\Outgo.Service\packages\Nancy.Hosting.Self.1.1\lib\net40\Nancy.Hosting.Self.dll</HintPath>
     </Reference>
@@ -62,19 +66,28 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Topshelf">
+      <HintPath>..\..\Solution\Outgo.Service\packages\Topshelf.3.1.4\lib\net40-full\Topshelf.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\DatabaseHost.cs" />
+    <Compile Include="Bootstrap\IConfigurationProvider.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\DatabaseHost.cs" />
-    <Compile Include="Services\IDatabaseHost.cs" />
-    <Compile Include="Services\IPaymentRepository.cs" />
-    <Compile Include="Services\IRepositoryBase.cs" />
-    <Compile Include="Services\IUserRepository.cs" />
-    <Compile Include="Services\PaymentRepository.cs" />
-    <Compile Include="Services\RepositoryBase.cs" />
-    <Compile Include="Bootstrap\ServiceBootstrap.cs" />
-    <Compile Include="Services\UserRepository.cs" />
+    <Compile Include="Data\IDatabaseHost.cs" />
+    <Compile Include="Data\IPaymentRepository.cs" />
+    <Compile Include="Data\IRepositoryBase.cs" />
+    <Compile Include="Data\IUserRepository.cs" />
+    <Compile Include="Data\PaymentRepository.cs" />
+    <Compile Include="Data\RepositoryBase.cs" />
+    <Compile Include="Bootstrap\ServiceBootstraper.cs" />
+    <Compile Include="Data\UserRepository.cs" />
+    <Compile Include="Service\Modules\HelloModule.cs" />
+    <Compile Include="Service\IServiceHost.cs" />
+    <Compile Include="Service\Modules\UserModule.cs" />
+    <Compile Include="Service\ServiceHost.cs" />
+    <Compile Include="Service\ServiceTopShelf.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -86,6 +99,7 @@
       <Name>Outgo.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
