@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
+using System.Threading;
 using Outgo.Contracts.Contract;
 using Outgo.Service.Bootstrap;
 using Outgo.Service.Data;
@@ -13,19 +15,23 @@ namespace Outgo.Service
 	{
 		private static void Main(string[] args)
 		{
-			//Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-us");
-			//const string connectionString = "Server=127.0.0.1;Port=5432;Database=outgo;Uid=postgres;Pwd=ghostdj10;";
-
-			//RawConnectionTest(connectionString);
-
-			//Console.ReadKey();
-
-			//SharedConnectionTest(connectionString);
-
-			//Console.ReadKey();
-
+			//RunDemo();
 			var topshelf = new ServiceTopShelf();
 			topshelf.Run();
+		}
+
+		private void RunDemo()
+		{
+			Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-us");
+			const string connectionString = "Server=127.0.0.1;Port=5432;Database=outgo;Uid=postgres;Pwd=ghostdj10;";
+
+			RawConnectionTest(connectionString);
+
+			Console.ReadKey();
+
+			SharedConnectionTest(connectionString);
+
+			Console.ReadKey();
 		}
 
 		private static void RawConnectionTest(string connectionString)
@@ -66,6 +72,9 @@ namespace Outgo.Service
 			var host = new DatabaseHost(config);
 
 			var userRepo = new UserRepository(host);
+
+			var newUser = userRepo.RegisterUser("John", "Doe");
+			userRepo.AddUserToGroup(newUser.UserId,1);
 
 			var users = userRepo.GetUsersByGroup(1);
 			foreach (var user in users)
