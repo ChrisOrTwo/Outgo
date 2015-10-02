@@ -15,15 +15,15 @@ namespace Outgo.Service
 	{
 		private static void Main(string[] args)
 		{
-			//RunDemo();
-			var topshelf = new ServiceTopShelf();
-			topshelf.Run();
+			RunDemo();
+			//var topshelf = new ServiceTopShelf();
+			//topshelf.Run();
 		}
 
-		private void RunDemo()
+		private static void RunDemo()
 		{
 			Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-us");
-			const string connectionString = "Server=127.0.0.1;Port=5432;Database=outgo;Uid=postgres;Pwd=ghostdj10;";
+			const string connectionString = "Server=127.0.0.1;Port=5432;Database=outgo;Uid=postgres;Pwd=postgres;";
 
 			RawConnectionTest(connectionString);
 

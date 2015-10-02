@@ -26,6 +26,33 @@ namespace Outgo.Service.Data
 			return Call<User>(db => db.Session.Users.Insert(user));
 		}
 
+		public User GetUser(int userId)
+		{
+			return Call<User>(db => db.Session.Users.Get(userId));
+		}
+
+		public int RemoveUser(int userId)
+		{
+			return Call<int>(db => db.Session.Users.DeleteByUserId(userId));
+		}
+
+		public Group RegisterGroup(string groupName)
+		{
+			var group = new Group {Name = groupName};
+			return Call<Group>(db => db.Session.Groups.Insert(group));
+		}
+
+		public Group GetGroup(int groupId)
+		{
+			return Call<Group>(db => db.Session.Groups.Get(groupId));
+		}
+
+		public int RemoveGroup(int groupId)
+		{
+			return Call<int>(db => db.Session.Groups.DeleteByGroupId(groupId));
+		}
+
+
 		public void AddUserToGroup(int userId, int groupId)
 		{
 			var userGroup = new UserGroup() { GroupId = groupId, UserId = userId };

@@ -4,7 +4,7 @@ using Outgo.Contracts.Contract;
 
 namespace Outgo.Service.Data
 {
-	public interface IPaymentRepository
+	public interface IPaymentRepository : IRepositoryBase
 	{
 		IList<Payment> GetAllUserPayments(int userId);
 		IList<Payment> GetUserPaymentsInGroup(int userId, int groupId);
