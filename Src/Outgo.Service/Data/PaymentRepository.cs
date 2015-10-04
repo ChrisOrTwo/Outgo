@@ -10,24 +10,37 @@ namespace Outgo.Service.Data
 		{
 		}
 
+		public IList<PaymentType> GetPaymentTypes()
+		{
+			return Call<List<PaymentType>>(db => db.Session.PaymentType.All());
+		}
+
 		public IList<Payment> GetAllUserPayments(int userId)
 		{
-			return Call<List<Payment>>(db => db.Session.Payments.FindAllByUserId(userId));
+			return Call<List<Payment>>(db => db.Session.Payment.FindAllByUserId(userId).WithPaymentType());
 		}
 
 		public IList<Payment> GetUserPaymentsInGroup(int userId, int groupId)
 		{
-			return Call<List<Payment>>(db => db.Session.Payments.FindAllByUserIdAndGroupId(userId, groupId));
+			return Call<List<Payment>>(db => db.Session.Payment.FindAllByUserIdAndGroupId(userId, groupId).WithPaymentType());
 		}
 
 		public IList<Payment> GetAllPaymentsInGroup(int groupId)
 		{
-			return Call<List<Payment>>(db => db.Session.Payments.FindAllByGroupId(groupId));
+			return Call<List<Payment>>(db => db.Session.Payment.FindAllByGroupId(groupId).WithPaymentType());
 		}
 
-		public IList<Payment> AddPayment(int userId, int groupId, int paymentTypeId, decimal amount, DateTime date)
+		public Payment AddPayment(int userId, int groupId, PaymentType paymentType, decimal amount, DateTime date)
 		{
-			throw new NotImplementedException();
+			var payment = new Payment()
+			{
+				UserId = userId,
+				GroupId = groupId,
+				Amount = amount,
+				Date = date,
+				PaymentTypeId = paymentType.PaymentTypeId
+			};
+			return Call<Payment>(db => db.Session.Payments.Insert(payment));
 		}
 	}
 }

@@ -7,6 +7,8 @@ namespace Outgo.Contracts.Contract
 		public int PaymentId { get; set; }
 		public int UserId { get; set; }
 		public int GroupId { get; set; }
+		public PaymentType PaymentType { get; set; }
+		public int PaymentTypeId { get; set; }
 		public decimal Amount { get; set; }
 		public DateTime Date { get; set; }
 	}
