@@ -1,5 +1,7 @@
 ﻿using System;
+using Nancy;
 using Nancy.Hosting.Self;
+using Outgo.Service.Bootstrap;
 
 namespace Outgo.Service.Service
 {
@@ -11,7 +13,11 @@ namespace Outgo.Service.Service
 		{
 			const string connectionString = "http://localhost:8888/nancy/";
 
-			_host = new NancyHost(new Uri(connectionString));
+			var configuration = new HostConfiguration();
+			configuration.UrlReservations = new UrlReservations();
+			configuration.UrlReservations.CreateAutomatically = true;
+			_host = new NancyHost(new Uri(connectionString), new ServiceBootstraper() ,configuration);
+			
 			_host.Start();
 			Console.WriteLine("Nancy is now listening on: {0}", connectionString);
 		}

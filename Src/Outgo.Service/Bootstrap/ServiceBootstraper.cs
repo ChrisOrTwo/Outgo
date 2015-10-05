@@ -12,7 +12,7 @@ namespace Outgo.Service.Bootstrap
 		{
 			return new ConfigurationProvider
 			{
-				ConnectionString = "Server=127.0.0.1;Port=5432;Database=outgo;Uid=postgres;Pwd=ghostdj10;"
+				ConnectionString = "Server=127.0.0.1;Port=5432;Database=outgo;Uid=postgres;Pwd=postgres;"
 			};
 		}
 
@@ -28,6 +28,8 @@ namespace Outgo.Service.Bootstrap
 
 			container.Register<INancyModule, HelloModule>().AsSingleton();
 			container.Register<INancyModule, UserModule>().AsSingleton();
+			container.Register<INancyModule, HelloViewModule>().AsSingleton();
+			container.Register<INancyModule, UsersModule>().AsSingleton();
 
 			var x = container.ResolveAll<INancyModule>().ToList();
 		}

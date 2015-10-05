@@ -15,9 +15,9 @@ namespace Outgo.Service
 	{
 		private static void Main(string[] args)
 		{
-			RunDemo();
-			//var topshelf = new ServiceTopShelf();
-			//topshelf.Run();
+			//RunDemo();
+			var topshelf = new ServiceTopShelf();
+			topshelf.Run();
 		}
 
 		private static void RunDemo()
