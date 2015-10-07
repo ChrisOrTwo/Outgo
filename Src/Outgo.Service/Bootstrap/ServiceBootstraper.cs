@@ -26,7 +26,6 @@ namespace Outgo.Service.Bootstrap
 			container.Register<IUserRepository, UserRepository>();
 			container.Register<IPaymentRepository, PaymentRepository>();
 
-			container.Register<INancyModule, HelloModule>().AsSingleton();
 			container.Register<INancyModule, UserModule>().AsSingleton();
 			container.Register<INancyModule, HelloViewModule>().AsSingleton();
 			container.Register<INancyModule, UsersModule>().AsSingleton();

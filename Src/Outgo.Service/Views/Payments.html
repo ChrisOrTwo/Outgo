@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+<form class="NewPaymentForm" method="POST" >
+    <p>New payment:</p>
+
+    <input readonly="true" name="GroupId" value="@Model.Group.GroupId"/>
+    <select name="UserId">
+        @Each.Users
+        <option value="@Current.UserId">@Current.Name, @Current.Surname</option>
+        @EndEach
+    </select>
+    <select name="PaymentTypeId">
+        @Each.Types
+        <option value="@Current.PaymentTypeId">@Current.Description</option>
+        @EndEach
+    </select>
+    <input type="number" name="Amount"/>
+    <input type="date" name="Date" />
+    <button type="submit">Add</button>
+</form>
+<div class="PaymentsList">
+    <p>Payments:</p>
+    <ul>
+        @Each.Payments
+        <li> @Current.UserId, @Current.PaymentType.Description, @Current.Amount, @Current.Date </li>
+        @EndEach
+    </ul>
+</div>
+</body>
+</html>

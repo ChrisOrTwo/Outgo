@@ -90,9 +90,9 @@
     <Compile Include="Data\RepositoryBase.cs" />
     <Compile Include="Bootstrap\ServiceBootstraper.cs" />
     <Compile Include="Data\UserRepository.cs" />
-    <Compile Include="Service\Modules\HelloModule.cs" />
     <Compile Include="Service\IServiceHost.cs" />
     <Compile Include="Service\Modules\HelloViewModule.cs" />
+    <Compile Include="Service\Modules\PaymentsModule.cs" />
     <Compile Include="Service\Modules\UserModule.cs" />
     <Compile Include="Service\Modules\UsersModule.cs" />
     <Compile Include="Service\ServiceHost.cs" />
@@ -114,7 +114,12 @@
     <Content Include="Views\HelloView.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\Users.html" />
+    <Content Include="Views\Payments.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Users.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

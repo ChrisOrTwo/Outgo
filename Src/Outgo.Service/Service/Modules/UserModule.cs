@@ -7,7 +7,7 @@ namespace Outgo.Service.Service.Modules
 	{
 		public UserModule(IUserRepository userRepository)
 		{
-			Get["/Users"] = x =>
+			Get["/UsersJson"] = x =>
 			{
 				var user = userRepository.GetUsersByGroup(1);
 				return Response.AsJson(user);
