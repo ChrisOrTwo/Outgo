@@ -91,15 +91,73 @@
     <Compile Include="Bootstrap\ServiceBootstraper.cs" />
     <Compile Include="Data\UserRepository.cs" />
     <Compile Include="Service\IServiceHost.cs" />
-    <Compile Include="Service\Modules\HelloViewModule.cs" />
-    <Compile Include="Service\Modules\PaymentsModule.cs" />
-    <Compile Include="Service\Modules\UserModule.cs" />
-    <Compile Include="Service\Modules\UsersModule.cs" />
+    <Compile Include="Modules\HelloViewModule.cs" />
+    <Compile Include="Modules\PaymentsModule.cs" />
+    <Compile Include="Modules\UserModule.cs" />
+    <Compile Include="Modules\UsersModule.cs" />
     <Compile Include="Service\ServiceHost.cs" />
     <Compile Include="Service\ServiceTopShelf.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Content\font\material-design-icons\Material-Design-Icons.eot">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\font\material-design-icons\Material-Design-Icons.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\font\material-design-icons\Material-Design-Icons.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\font\material-design-icons\Material-Design-Icons.woff2">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\font\roboto\Roboto-Bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\font\roboto\Roboto-Bold.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\font\roboto\Roboto-Bold.woff2">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\font\roboto\Roboto-Light.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\font\roboto\Roboto-Light.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\font\roboto\Roboto-Light.woff2">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\font\roboto\Roboto-Medium.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\font\roboto\Roboto-Medium.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\font\roboto\Roboto-Medium.woff2">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\font\roboto\Roboto-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\font\roboto\Roboto-Regular.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\font\roboto\Roboto-Regular.woff2">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\font\roboto\Roboto-Thin.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\font\roboto\Roboto-Thin.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\font\roboto\Roboto-Thin.woff2">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\LICENSE" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -111,6 +169,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\materialize.css" />
+    <Content Include="Content\css\materialize.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\font\material-design-icons\LICENSE.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\font\material-design-icons\Material-Design-Icons.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\js\materialize.js" />
+    <Content Include="Content\js\materialize.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Views\HelloView.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -2,36 +2,91 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="Content/css/materialize.min.css" media="screen,projection" />
     <meta charset="utf-8" />
     <title></title>
 </head>
 <body>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="Content/js/materialize.min.js"></script>
+    <Script>
+        $(document).ready(function() {
+        $('select').material_select();
+      });
 
-<form class="NewPaymentForm" method="POST" >
-    <p>New payment:</p>
+        $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+    </Script>
+    <div class="row">
+        <div class="card-panel col m6 s12 l3 offset-l4 offset-m2">
+            <form class="NewPaymentForm" method="POST">
+                <p>New payment:</p>
 
-    <input readonly="true" name="GroupId" value="@Model.Group.GroupId"/>
-    <select name="UserId">
-        @Each.Users
-        <option value="@Current.UserId">@Current.Name, @Current.Surname</option>
-        @EndEach
-    </select>
-    <select name="PaymentTypeId">
-        @Each.Types
-        <option value="@Current.PaymentTypeId">@Current.Description</option>
-        @EndEach
-    </select>
-    <input type="number" name="Amount"/>
-    <input type="date" name="Date" />
-    <button type="submit">Add</button>
-</form>
-<div class="PaymentsList">
-    <p>Payments:</p>
-    <ul>
-        @Each.Payments
-        <li> @Current.UserId, @Current.PaymentType.Description, @Current.Amount, @Current.Date </li>
-        @EndEach
-    </ul>
-</div>
+                <div class="row" style="margin-bottom: 0">
+                    <div class="input-field col">
+                        <input readonly id="GroupId" name="GroupId" value="@Model.Group.GroupId" type="text" />
+                        <label class="active" for="GroupId">Group</label>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom: 0">
+                    <div class="input-field col">
+                        <select name="UserId">
+                            <option value="" disabled selected>Choose user</option>
+                            @Each.Users
+                            <option value="@Current.UserId">@Current.Name, @Current.Surname</option>
+                            @EndEach
+                        </select>
+                        <label>User</label>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom: 0">
+                    <div class="input-field col">
+                        <select name="PaymentTypeId" >
+                            <option value="" disabled selected>Choose payment type</option>
+                            @Each.Types
+                            <option value="@Current.PaymentTypeId">@Current.Description</option>
+                            @EndEach
+                        </select>
+                        <label>Payment Type</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 0">
+                    <div class="input-field col">
+                        <input type="text" name="Amount" id="Amount" />
+                        <label for="Amount">Amount</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 0">
+                    <div class="input-field blue-grey-text col">
+                        <input type="text" name="Date" id="DatePicker" class="datepicker">
+                        <label for="DatePicker">Date</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="btn green waves-effect waves-light" type="submit" name="action">
+                        Add
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="PaymentsList col m6 s12 l3 offset-l4 offset-m2">
+            <ul class="collection with-header">
+                <li class="collection-header"><h4>Payments</h4></li>
+                @Each.Payments
+                <li class="collection-item"> @Current.UserId, @Current.PaymentType.Description, @Current.Amount, @Current.Date </li>
+                @EndEach
+            </ul>
+        </div>
+
+    </div>
+
 </body>
 </html>

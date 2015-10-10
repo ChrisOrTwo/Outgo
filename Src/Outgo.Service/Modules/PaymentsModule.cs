@@ -28,7 +28,8 @@ namespace Outgo.Service.Service.Modules
 				payment.PaymentType = _model.Types.First(p => p.PaymentTypeId == payment.PaymentTypeId);
 				paymentRepository.AddPayment(payment.UserId, payment.GroupId, payment.PaymentType, payment.Amount, payment.Date);
 				_model.Payments = paymentRepository.GetAllPaymentsInGroup(_model.Group.GroupId).ToList();
-				return View["Payments.html", _model];
+
+				return Response.AsRedirect("~/Payments");
 			};
 		}
 
