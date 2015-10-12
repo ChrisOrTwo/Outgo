@@ -9,14 +9,14 @@ namespace Outgo.Service.Service.Modules
 {
 	public class PaymentsModule : NancyModule
 	{
-		PaymentViewModel _model = new PaymentViewModel();
+		readonly PaymentModel _model = new PaymentModel();
 
 		public PaymentsModule(IUserRepository userRepository, IPaymentRepository paymentRepository)
 		{
 			Get["/Payments"] = x =>
 			{
 				PopulateModel(userRepository, paymentRepository);
-				_model.Payments = paymentRepository.GetAllPaymentsInGroup(_model.Group.GroupId).ToList();
+				_model.Payments = paymentRepository.GetAllPaymentsInGroup(1).ToList();
 
 				return View["Payments.html", _model];
 			};
@@ -27,20 +27,19 @@ namespace Outgo.Service.Service.Modules
 				PopulateModel(userRepository, paymentRepository);
 				payment.PaymentType = _model.Types.First(p => p.PaymentTypeId == payment.PaymentTypeId);
 				paymentRepository.AddPayment(payment.UserId, payment.GroupId, payment.PaymentType, payment.Amount, payment.Date);
-				_model.Payments = paymentRepository.GetAllPaymentsInGroup(_model.Group.GroupId).ToList();
-
+				
 				return Response.AsRedirect("~/Payments");
 			};
 		}
 
 		private void PopulateModel(IUserRepository userRepository, IPaymentRepository paymentRepository)
 		{
-			_model.Group = userRepository.GetGroup(1);
-			_model.Users = userRepository.GetUsersByGroup(_model.Group.GroupId);
+			_model.Groups = userRepository.GetAllGroups();
+			_model.Users = userRepository.GetAllUsers();
 			_model.Types = paymentRepository.GetPaymentTypes().ToList();
 		}
 
-		public class PaymentViewModel
+		public class PaymentModel
 		{
 			public List<Payment> Payments { get; set; }
 
@@ -48,7 +47,7 @@ namespace Outgo.Service.Service.Modules
 
 			public List<User> Users { get; set; }
 
-			public Group Group { get; set; }
+			public List<Group> Groups { get; set; }
 		}
 	}
 }

@@ -20,6 +20,10 @@ namespace Outgo.Service.Data
 		List<User> GetUsersByGroup(int groupId);
 
 		List<Group> GetGroupsByUser(int userId);
+
+		List<Group> GetAllGroups();
+
+		List<User> GetAllUsers();
 		
 		void AddUserToGroup(int userId, int groupId);
 

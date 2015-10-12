@@ -44,6 +44,17 @@ namespace Outgo.Service.Integration.Tests
 		}
 
 		[Test]
+		public void GetAllUsers_returns_all_user()
+		{
+			User userRegisteredFirst = Sut.RegisterUser("user1","usersurname1");
+			User userRegisteredSecond = Sut.RegisterUser("user2", "usersurname2");
+			var users = Sut.GetAllUsers();
+
+			Assert.IsTrue(users.Count(x => x.Name == userRegisteredFirst.Name && x.Surname == userRegisteredFirst.Surname) == 1);
+			Assert.IsTrue(users.Count(x => x.Name == userRegisteredSecond.Name && x.Surname == userRegisteredSecond.Surname) == 1);
+		}
+
+		[Test]
 		public void RemoveUser_removes_user()
 		{
 			string firstName = "Testing";
@@ -78,6 +89,17 @@ namespace Outgo.Service.Integration.Tests
 
 			Assert.IsNotNull(group);
 			Assert.AreEqual(group.Name, groupName);
+		}
+
+		[Test]
+		public void GetAllGroups_returns_all_groups()
+		{
+			Group groupRegisteredFirst = Sut.RegisterGroup("group1");
+			Group groupRegisteredSecond = Sut.RegisterGroup("group2");
+			var groups = Sut.GetAllGroups();
+
+			Assert.IsTrue(groups.Count(x => x.Name == groupRegisteredFirst.Name) == 1);
+			Assert.IsTrue(groups.Count(x => x.Name == groupRegisteredSecond.Name) == 1);
 		}
 
 		[Test]

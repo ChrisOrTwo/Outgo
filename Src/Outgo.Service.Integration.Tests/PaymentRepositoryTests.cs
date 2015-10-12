@@ -63,6 +63,8 @@ namespace Outgo.Service.Integration.Tests
 
 			Assert.AreEqual(payments.Count, 2);
 			Assert.AreEqual(payments.First().PaymentType.Description, paymentTypes.First().Description);
+			Assert.AreEqual(payments.First().User.Name, user.Name);
+			Assert.AreEqual(payments.First().Group.Name, group.Name);
 		}
 
 		[Test]

@@ -17,17 +17,17 @@ namespace Outgo.Service.Data
 
 		public IList<Payment> GetAllUserPayments(int userId)
 		{
-			return Call<List<Payment>>(db => db.Session.Payment.FindAllByUserId(userId).WithPaymentType());
+			return Call<List<Payment>>(db => db.Session.Payment.FindAllByUserId(userId).WithPaymentType().WithUser().WithGroup());
 		}
 
 		public IList<Payment> GetUserPaymentsInGroup(int userId, int groupId)
 		{
-			return Call<List<Payment>>(db => db.Session.Payment.FindAllByUserIdAndGroupId(userId, groupId).WithPaymentType());
+			return Call<List<Payment>>(db => db.Session.Payment.FindAllByUserIdAndGroupId(userId, groupId).WithPaymentType().WithUser().WithGroup());
 		}
 
 		public IList<Payment> GetAllPaymentsInGroup(int groupId)
 		{
-			return Call<List<Payment>>(db => db.Session.Payment.FindAllByGroupId(groupId).WithPaymentType());
+			return Call<List<Payment>>(db => db.Session.Payment.FindAllByGroupId(groupId).WithPaymentType().WithUser().WithGroup());
 		}
 
 		public Payment AddPayment(int userId, int groupId, PaymentType paymentType, decimal amount, DateTime date)

@@ -186,6 +186,7 @@
     <Content Include="Views\HelloView.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\Index.html" />
     <Content Include="Views\Payments.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

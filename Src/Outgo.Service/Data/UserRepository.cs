@@ -20,6 +20,16 @@ namespace Outgo.Service.Data
 			return Call<List<Group>>(db => db.Session.UserGroup.FindAllByUserId(userId).Group);
 		}
 
+		public List<Group> GetAllGroups()
+		{
+			return Call<List<Group>>(db => db.Session.Group.All());
+		}
+
+		public List<User> GetAllUsers()
+		{
+			return Call<List<User>>(db => db.Session.User.All());
+		}
+
 		public User RegisterUser(string name, string surname)
 		{
 			var user = new User { Name = name, Surname = surname };

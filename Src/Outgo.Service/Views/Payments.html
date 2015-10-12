@@ -11,28 +11,33 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="Content/js/materialize.min.js"></script>
     <Script>
-        $(document).ready(function() {
-        $('select').material_select();
-      });
+        $(document).ready(function () {
+            $('select').material_select();
+        });
 
         $('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15 // Creates a dropdown of 15 years to control year
-  });
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15 // Creates a dropdown of 15 years to control year
+        });
     </Script>
     <div class="row">
-        <div class="card-panel col m6 s12 l3 offset-l4 offset-m2">
+        <div class="card-panel col l2">
             <form class="NewPaymentForm" method="POST">
                 <p>New payment:</p>
 
-                <div class="row" style="margin-bottom: 0">
+                <div class="row">
                     <div class="input-field col">
-                        <input readonly id="GroupId" name="GroupId" value="@Model.Group.GroupId" type="text" />
-                        <label class="active" for="GroupId">Group</label>
+                        <select name="GroupId">
+                            <option value="" disabled selected>Choose Group</option>
+                            @Each.Groups
+                            <option value="@Current.GroupId">@Current.Name</option>
+                            @EndEach
+                        </select>
+                        <label>Group</label>
                     </div>
                 </div>
 
-                <div class="row" style="margin-bottom: 0">
+                <div class="row">
                     <div class="input-field col">
                         <select name="UserId">
                             <option value="" disabled selected>Choose user</option>
@@ -44,9 +49,9 @@
                     </div>
                 </div>
 
-                <div class="row" style="margin-bottom: 0">
+                <div class="row">
                     <div class="input-field col">
-                        <select name="PaymentTypeId" >
+                        <select name="PaymentTypeId">
                             <option value="" disabled selected>Choose payment type</option>
                             @Each.Types
                             <option value="@Current.PaymentTypeId">@Current.Description</option>
@@ -55,13 +60,13 @@
                         <label>Payment Type</label>
                     </div>
                 </div>
-                <div class="row" style="margin-bottom: 0">
+                <div class="row">
                     <div class="input-field col">
                         <input type="text" name="Amount" id="Amount" />
                         <label for="Amount">Amount</label>
                     </div>
                 </div>
-                <div class="row" style="margin-bottom: 0">
+                <div class="row">
                     <div class="input-field blue-grey-text col">
                         <input type="text" name="Date" id="DatePicker" class="datepicker">
                         <label for="DatePicker">Date</label>
@@ -76,14 +81,25 @@
             </form>
         </div>
 
-
-        <div class="PaymentsList col m6 s12 l3 offset-l4 offset-m2">
-            <ul class="collection with-header">
-                <li class="collection-header"><h4>Payments</h4></li>
+        <div class="card-panel PaymentsList col l9 offset-l1">
+            <table class="striped">
+                <thead>
+                <th data-Filed="UserId">User</th>
+                <th data-Filed="PaymentType">Type</th>
+                <th data-Filed="Amount">Amount</th>
+                <th data-Filed="Date">Date</th>
+                </thead>
+                <tbody>
                 @Each.Payments
-                <li class="collection-item"> @Current.UserId, @Current.PaymentType.Description, @Current.Amount, @Current.Date </li>
+                    <tr>
+                        <td>@Current.User.Name, @Current.User.Surname</td>
+                        <td>@Current.PaymentType.Description</td>
+                        <td>@Current.Amount PLN</td>
+                        <td>@Current.Date</td>
+                    </tr>
                 @EndEach
-            </ul>
+                </tbody>
+            </table>
         </div>
 
     </div>
