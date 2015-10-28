@@ -19,7 +19,7 @@ namespace Outgo.Service.Bootstrap
 
 		protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)
 		{
-			//CORS Enable
+			//CORS Enabled
 			pipelines.AfterRequest.AddItemToEndOfPipeline(ctx =>
 			{
 				ctx.Response
